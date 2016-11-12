@@ -1,5 +1,5 @@
 {
-  "name": "redux_em",
+  "name": "redux-em",
   "version": "1.0.0",
   "description": "A set of helpers to dry up redux code, and provide a more opinionated api",
   "main": "index.js",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/leonp1991/redux_em/issues"
   },
-  "homepage": "https://github.com/leonp1991/redux_em#readme"
+  "homepage": "https://github.com/leonp1991/redux_em#readme",
+  "peerDependencies": {
+    "redux": "^3.6.0"
+  }
 }
