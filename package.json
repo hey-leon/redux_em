@@ -1,6 +1,6 @@
 {
   "name": "redux-em",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A set of helpers to dry up redux code, and provide a more opinionated api",
   "main": "index.js",
   "scripts": {
