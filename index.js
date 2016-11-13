@@ -93,5 +93,9 @@ function extractNamespace(core) {
     );
   }
 
-  return namespace;
+  // if only one function in module (will match Init)
+  // so we should remove substring Init
+  const strippedNamespace = namespace.replace('Init', '');
+
+  return strippedNamespace;
 }
