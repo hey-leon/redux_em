@@ -28,7 +28,7 @@ import { createReducer } from 'redux-em';
 
 or for legacy importing:
 ```javascript
-import { createReducer } form 'redux-em/legacy';
+import { createReducer } from 'redux-em/legacy';
 
 // or
 
@@ -97,7 +97,7 @@ export const userReducer = createReducer(core);
 /**
  * an example using the reducer would be:
  *  
- *  import { userReducer } form './user';
+ *  import { userReducer } from './user';
  *  import { createStore } from 'redux';
  *  
  *  const store = createStore(userReducer);
