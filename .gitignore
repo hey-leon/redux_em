@@ -1,0 +1,11 @@
+# ide's and personal configs
+.vscode
+.idea
+
+# project build targets
+node_modules
+build
+docs
+
+# secret files
+**/*.keys

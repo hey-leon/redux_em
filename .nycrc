@@ -1,0 +1,17 @@
+{
+  "report-dir": "./docs/test",
+  "extension": [
+    ".js"
+  ],
+  "reporter": [
+    "text-summary",
+    "html"
+  ],
+  "include": [
+    "source/**/*.js"
+  ],
+  "statements": 80,
+  "functions": 80,
+  "branches": 80,
+  "lines": 80
+}

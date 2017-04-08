@@ -16,7 +16,7 @@ and simplified style of writing redux logic.
 - a more opinionated api enforcing standards.
 
 ## api
-- ```createReducer: StateUpdaters => Function```
+- ```createReducer: StateUpdaters => Reducer```
 - ```createActions: StateUpdaters => ActionCreators```
 - ```combineActions: ActionCreators[] => ActionCreators```
 

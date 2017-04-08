@@ -2,9 +2,9 @@
   "name": "redux-em",
   "version": "1.1.0",
   "description": "A set of helpers to dry up redux code, and provide a more opinionated api",
-  "main": "index.js",
+  "main": "build",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,20 @@
   "homepage": "https://github.com/leonp1991/redux_em#readme",
   "peerDependencies": {
     "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "ava": "latest",
+    "babel-cli": "latest",
+    "babel-eslint": "latest",
+    "babel-plugin-transform-flow-strip-types": "latest",
+    "babel-plugin-transform-object-rest-spread": "latest",
+    "babel-preset-env": "latest",
+    "babel-register": "latest",
+    "codecov": "latest",
+    "eslint": "latest",
+    "eslint-plugin-flowtype": "latest",
+    "flow-bin": "latest",
+    "nyc": "latest",
+    "sinon": "^2.1.0"
   }
 }

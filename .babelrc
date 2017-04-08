@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "babel-plugin-transform-flow-strip-types",
+    "transform-object-rest-spread"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["> 2%"]
+      }
+    }]
+  ]
+}
