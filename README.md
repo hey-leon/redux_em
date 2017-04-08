@@ -1,19 +1,24 @@
 # Redux_EM - Redux Easy Mode (redux-em).
 
+# Breaking Changes to API in 2.0
+In an effort to adopt a common method of resolution of
+es dependencies the import api of this package is changed.
+see how to import for more details.
+
 ## concept
-This package exposes an api that extends the standard 
+This package exposes an api that extends the standard
 redux offering. redux-em provides a more opinionated
 and simplified style of writing redux logic.
 
 ## advantages
-- no more maintaining reducers or or actions they are created for you.
+- no more maintaining reducers or actions they are created for you.
 - no need to test reducers or actions.
 - a more opinionated api enforcing standards.
 
 ## api
-- ```createReducer(coreModule: Object) : Function```
-- ```createActions(coreModule: Object) : Object```
-- ```combineActions(actionModules: Array) : Object```
+- ```createReducer: StateUpdaters => Function```
+- ```createActions: StateUpdaters => ActionCreators```
+- ```combineActions: ActionCreators[] => ActionCreators```
 
 ## how to install
 ```sh
@@ -21,62 +26,60 @@ npm i -S redux-em
 ```
 
 ## how to import
-the default import uses native imports (to support tree-shaking):
+The recommended import is the es version if you are using webpack 2:
+
 ```javascript
-import { createReducer } from 'redux-em';
+import { createReducer } from 'redux-em/es'
 ```
 
-or for legacy importing:
+For for legacy imports:
 ```javascript
-import { createReducer } from 'redux-em/legacy';
+import { createReducer } from 'redux-em'
 
 // or
 
-const { createReducer } = require('redux-em/legacy');
+const { createReducer } = require('redux-em')
 ```
 ## usage
 
 **step one**: create your module structure
 
 ```
-/**
- * an example module called user
- */
+//
+// an example module called user
+//
 
  user/
   |- index.js // where the actions and reducer will be exposed from
-  |- core/
-      |- index.js // state operator definitions
-      |- spec.js  // state operator spec/tests
+  |- core.js // state updater definitions
+  |- spec.js  // state updater spec/tests
 
 ```
 
-**step two**: create your state operator functions (coreModule).
+**step two**: create your state updater functions (core module).
 
-user/core/index.js
+user/core.js
 
 ```javascript
-/**
- * @module user core operators
- */
-import { Map, fromJS } from 'immutable';
+import { Map, fromJS } from 'immutable'
 
 // initialises the user state
 export function userInit() {
-  return new Map();
+  return new Map()
 }
 
 // sets the user state
 export function userSet(state, { user }) {
-  return fromJS(user);
+  return fromJS(user)
 }
 
 // merges part of the user state
 export function userMergeIn(state, { field, value }) {
-  const path =
-    typeof field !== Array ? [field] : field;
+  const path = typeof field !== Array
+    ? [field]
+    :  field
 
-  return state.mergeIn(path, value);
+  return state.mergeIn(path, value)
 }
 
 ```
@@ -84,41 +87,38 @@ export function userMergeIn(state, { field, value }) {
 
 user/index.js
 ```javascript
-/**
- * @module user reducer & actions
- */
-import { createReducer, createActions } from 'redux-em';
-import * core from './core';
+import { createReducer, createActions } from 'redux-em/es'
+import * core from './core'
 
 
 // user reducer
-export const userReducer = createReducer(core);
+export const userReducer = createReducer(core)
 
 /**
- * an example using the reducer would be:
- *  
- *  import { userReducer } from './user';
- *  import { createStore } from 'redux';
- *  
- *  const store = createStore(userReducer);
+ * usage example:
+ *
+ *  import { createStore } from 'redux'
+ *  import { userReducer } from './user'
+ *
+ *  const store = createStore(userReducer)
  */
 
 
 // user actions
-export const userActions = createActions(core);
+export const userActions = createActions(core)
 
 /**
- * an example of using the actions would be:
- * 
- *  import { userActions } from './user';
- *  import store from './store';
- *  
+ * example usage:
+ *
+ *  import { userActions } from './user'
+ *  import store from './store'
+ *
  *  const user = {
  *    randomUserData: 'foobar',
  *  };
- *  
+ *
  *  store.dispatch(
- *    userActions.userSet({ user });
+ *    userActions.userSet({ user })
  *  );
  */
 
@@ -131,26 +131,26 @@ export const userActions = createActions(core);
 
 as your project grows it is likely you will have a large amount of reducers
 and actions. to manage the reducers, redux provides a helper called
-combineReducers. this combines the reducers to created an index reducer.
-redux-em gives a similar api combineActions. This function takes an Array
-of action modules and creates an index action module.
+combineReducers. this combines the reducers to create an index reducer.
+redux-em gives a similar api, combineActions. This function takes an Array
+of action modules and creates an index action module. this makes it
+easier to include large action sets
 
 ```javascript
-import { combineActions } from 'redux-em';
-
-import { settingsActions } from './settings';
-import { randomActions } from './random'; 
-import { userActions } from './user';
+import { combineActions }  from 'redux-em/es'
+import { settingsActions } from './settings'
+import { randomActions }   from './random'
+import { userActions }     from './user'
 
 
 const actions = [
   settingsActions,
   randomActions,
   userActions,
-];
+]
 
 
-export default combineActions(actions);
+export default combineActions(actions)
 ```
 
 
