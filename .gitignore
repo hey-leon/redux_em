@@ -2,9 +2,9 @@
 .vscode
 .idea
 
-# project build targets
+# project lib targets
 node_modules
-build
+lib
 docs
 
 # secret files
