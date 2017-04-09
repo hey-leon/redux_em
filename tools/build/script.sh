@@ -1,4 +1,3 @@
-
 # build umd
 export NODE_ENV=umd
 

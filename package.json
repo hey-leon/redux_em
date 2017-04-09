@@ -2,7 +2,7 @@
   "name": "redux-em",
   "version": "2.0.2",
   "description": "A set of helpers to dry up redux code, and provide a more opinionated api",
-  "main": "umd/ReduxEm.js",
+  "main": "umd/index.js",
   "scripts": {
     "build": "./tools/build/script.sh",
     "test": "./tools/test/watch.sh",
@@ -27,6 +27,18 @@
   "peerDependencies": {
     "redux": "^3.6.0"
   },
+  "ava": {
+    "files": [
+      "tests/**/*.spec.js"
+    ],
+    "source": [
+      "source/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
+  },
   "devDependencies": {
     "ava": "latest",
     "babel-cli": "^6.24.1",
@@ -39,7 +51,7 @@
     "babel-register": "latest",
     "codecov": "latest",
     "eslint": "latest",
-    "eslint-loader": "^1.7.1",
+    "eslint-loader": "latest",
     "eslint-plugin-flowtype": "latest",
     "flow-bin": "latest",
     "nyc": "latest",
