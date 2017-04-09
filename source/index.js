@@ -51,7 +51,6 @@ export const combineActions: ({ [k: string]: Function }[]) => { [k: string]: Fun
 function extractNamespace(core) {
   const fnames = Object.keys(core).sort()
 
-
   const f = fnames[0]
   const l = fnames[fnames.length - 1]
 
