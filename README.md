@@ -1,14 +1,14 @@
 # Redux_EM - Redux Easy Mode (redux-em).
 
-# Breaking Changes to API in 2.0
-In an effort to adopt a common method of resolution of
-es dependencies the import api of this package is changed.
-see how to import for more details.
-
 ## concept
 This package exposes an api that extends the standard
 redux offering. redux-em provides a more opinionated
 and simplified style of writing redux logic.
+
+# Breaking Changes to API in 2.0
+In an effort to adopt a common method of resolution of
+es dependencies the import api of this package is changed.
+see how to import for more details.
 
 ## advantages
 - no more maintaining reducers or actions they are created for you.
@@ -40,6 +40,24 @@ import { createReducer } from 'redux-em'
 
 const { createReducer } = require('redux-em')
 ```
+
+## configure webpack to tree shake node_modules/**/es/*
+
+to tree shake node_modules it is important that we import the native modules versions, but
+also, make sure that they are transpiled by webpack. to do this we need to configure our webpack
+rule for js slightly different slightly different.
+
+```javascript
+const jsRule = {
+  test: /\.jsx?$/,
+  exclude: /node_modules\/.*?(?!\/es\/).*/, // exclude node modules unless inside a 'es' sub directory
+  use: 'babel-loader',
+}
+```
+
+this will allow traditional node_modules to skip transpilation, but modules inside an 'es'
+sub directory to transpiled.
+
 ## usage
 
 **step one**: create your module structure
