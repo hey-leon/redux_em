@@ -7,4 +7,4 @@ export NODE_ENV=umd
 # build es
 export NODE_ENV=es
 
-./node_modules/.bin/babel source -d lib/es
+./node_modules/.bin/babel source -d es

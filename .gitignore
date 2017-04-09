@@ -4,8 +4,9 @@
 
 # project lib targets
 node_modules
-lib
 docs
+umd
+es
 
 # secret files
 **/*.keys

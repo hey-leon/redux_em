@@ -2,10 +2,9 @@
   "name": "redux-em",
   "version": "2.0.1",
   "description": "A set of helpers to dry up redux code, and provide a more opinionated api",
-  "main": "lib/ReduxEm.js",
+  "main": "umd/ReduxEm.js",
   "scripts": {
     "build": "./tools/build/script.sh",
-    "build:es": "babel source -d lib/es",
     "test": "./tools/test/watch.sh",
     "test:once": "./tools/test/once.sh",
     "coverage": "./tools/test/coverage"

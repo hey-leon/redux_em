@@ -2,14 +2,14 @@ const Webpack = require('webpack')
 const Path = require('path')
 
 const LibraryName = 'ReduxEm'
-const OutputFile = LibraryName + '.js'
+const OutputFile = 'index.js'
 
 const config = {
 
   entry: Path.resolve('./source/index.js'),
 
   output: {
-    path: Path.resolve('./lib'),
+    path: Path.resolve('./umd'),
     filename: OutputFile,
     library: LibraryName,
     libraryTarget: 'umd',
