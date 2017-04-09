@@ -2,11 +2,22 @@
 .vscode
 .idea
 
+
 # project lib targets
-node_modules
-docs
 umd
 es
+node_modules
+docs
+
 
 # secret files
 **/*.keys
+
+
+
+# log files
+npm-debug.log
+
+
+# os files
+.DS_Store
