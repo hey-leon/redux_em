@@ -1,2 +1,2 @@
-build/**/*.js
+lib/**/*.js
 docs/**/*.js

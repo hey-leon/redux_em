@@ -1,13 +1,23 @@
 {
-  "plugins": [
-    "babel-plugin-transform-flow-strip-types",
-    "transform-object-rest-spread"
-  ],
-  "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["> 2%"]
-      }
-    }]
-  ]
+  "env": {
+    "umd": {
+      "plugins": [
+        "babel-plugin-transform-flow-strip-types",
+        "transform-object-rest-spread"
+      ],
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["> 2%"]
+          }
+        }]
+      ]
+    },
+    "es": {
+      "plugins": [
+        "babel-plugin-transform-flow-strip-types",
+        "transform-object-rest-spread"
+      ]
+    }
+  }
 }
