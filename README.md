@@ -50,7 +50,7 @@ rule for js slightly different slightly different.
 ```javascript
 const jsRule = {
   test: /\.jsx?$/,
-  exclude: /node_modules\/.*?(?!\/es\/).*/, // exclude node modules unless inside a 'es' sub directory
+  exclude: /node_modules\/(?!.*?es)/, // exclude node modules unless inside a 'es' sub directory
   use: 'babel-loader',
 }
 ```
