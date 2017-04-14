@@ -1,5 +1,9 @@
 
 
+export const compose =
+  (...fns) => fns.reduce((fns, fn) => (...args) => fn(fns(...args)))
+
+
 export const justFnNames =
   (ns, [ name, entity ]) => entity instanceof Function
     ? [ ...ns, name ]

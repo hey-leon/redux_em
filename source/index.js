@@ -4,14 +4,14 @@ import {
   getPrefix,
   justFnNames,
   throwError,
-  toSnakecase,
-  toUppercase,
+  toSnake,
+  toUpper,
 } from './helpers'
 
 
 export const createReducer: (m: Module) => Func =
   m => {
-    const ns = getPrefix(Object.entries(m).reduce(justFnNames))
+    const ns = getPrefix(Object.entries(m).reduce(justFnNames, []))
 
     if (!(m[`${ns}Init`] instanceof Function)) {
       return throwError(
@@ -24,9 +24,9 @@ export const createReducer: (m: Module) => Func =
       )
     }
 
-    return (state = m[`${ns}Init`](), { meta, data }): Reducer =>
-      m[meta.updater] instanceof Function
-        ? m[meta.updater](state, data)
+    return (state = m[`${ns}Init`](), { updater, data }): Reducer =>
+      m[updater] instanceof Function
+        ? m[updater](state, data)
         : state
   }
 
@@ -38,8 +38,8 @@ export const createActions: (m: Module) => FuncMap =
     .reduce((us, u) => ({
       ...us,
       [u]: data => ({
-        type: `app/${compose(toSnakecase, toUppercase)(u)}`,
-        meta: { updater: u },
+        type: `app/${compose(toSnake, toUpper)(u)}`,
+        updater: u,
         data,
       }),
     }), {})
